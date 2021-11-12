@@ -41,7 +41,8 @@ class ProductImage extends StatelessWidget {
           ]);
 
   Widget getImage(String? picture) {
-    if (picture == null) {
+    print('getImage');
+    if (picture == null || picture == '') {
       print('picture == null');
       return const Image(
         image: AssetImage('assets/no-image.png'),
@@ -52,13 +53,13 @@ class ProductImage extends StatelessWidget {
     if (picture.startsWith('http')) {
       print('startsWith("http")');
       return FadeInImage(
-        image: NetworkImage(url!),
+        image: NetworkImage(picture),
         placeholder: const AssetImage('assets/jar-loading.gif'),
         fit: BoxFit.cover,
       );
     }
 
-    print('last option');
+    print('last option, picture: ${picture}');
     return Image.file(
       File(picture),
       fit: BoxFit.cover,

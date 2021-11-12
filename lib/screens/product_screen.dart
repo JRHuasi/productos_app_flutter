@@ -33,7 +33,7 @@ class _ProductsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productForm = Provider.of<ProductFormProvider>(context);
-
+    print('ProductScreen picture: ${productService.selectedProduct.picture}');
     return Scaffold(
       body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -55,9 +55,10 @@ class _ProductsScreenBody extends StatelessWidget {
                       child: IconButton(
                           onPressed: () async {
                             final picker = ImagePicker();
-                            final PickedFile? pickedFile = await picker.getImage(
-                                source: ImageSource.camera, 
-																imageQuality: 100);
+                            final PickedFile? pickedFile =
+                                await picker.getImage(
+                                    source: ImageSource.camera,
+                                    imageQuality: 100);
 
                             if (pickedFile == null) {
                               print('No seleccionó nada');
